@@ -23,8 +23,8 @@ function minmaxRecursive(selectedFloors, start, end) {
     const maxmumm=    Math.max(leftMinMax.max, rightMinMax.max);
     console.log(minimumm);
     console.log(maxmumm);
-    
-    
+    const median = Math.floor((minimumm+maxmumm)/2);
+    console.log(median);    
 }
 
   
@@ -60,29 +60,3 @@ function minmaxRecursive(selectedFloors, start, end) {
 
     console.log('Lift started!');
   }
-  /*function minmaxRecursive(selectedFloors, start, end) {
-    // Base case: when array contains only one element
-    if (start === end) {
-        return { min: selectedFloors[start], max: selectedFloors[start] };
-    }
-    
-    // Base case: when array contains only two elements
-    if (end === start + 1) {
-        return { 
-            min: Math.min(selectedFloors[start], selectedFloors[end]),
-            max: Math.max(selectedFloors[start], selectedFloors[end])
-        };
-    }
-    
-    // Divide the array into two halves and find minmax of each half recursively
-    const mid = Math.floor((start + end) / 2);
-    const leftMinMax = minmaxRecursive(selectedFloors, start, mid);
-    const rightMinMax = minmaxRecursive(selectedFloors, mid + 1, end);
-    
-    // Compare minmax of two halves
-    return { 
-        min: Math.min(leftMinMax.min, rightMinMax.min),
-        max: Math.max(leftMinMax.max, rightMinMax.max)
-    };
-}
-*/
