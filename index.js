@@ -12,6 +12,7 @@ function minmaxRecursive(selectedFloors, start, end) {
         };
     }
     
+    
     // Divide the array into two halves and find minmax of each half recursively
     const mid = Math.floor((start + end) / 2);
     const leftMinMax = minmaxRecursive(selectedFloors, start, mid);
@@ -24,23 +25,27 @@ function minmaxRecursive(selectedFloors, start, end) {
     console.log(minimumm);
     console.log(maxmumm);
     const median = Math.floor((minimumm+maxmumm)/2);
-    console.log(median);    
+    //console.log(median+" Is median");  
+    return median; 
+
 }
 
-  
-  
-  
-  
-  
-  // JavaScript function to toggle selection of elevator buttons
-  function toggleSelection(floor) {
-    var button = document.getElementById('button' + floor);
-  // console.log(button);
-    button.classList.toggle('selected');
-  }
+function toggleSelection2(median) {
+    // Sabhi toggle buttons se "selected" class hatao
+    var allButtons = document.querySelectorAll('.button');
+    allButtons.forEach(function(button) {
+        button.classList.remove('selected');
+    });
 
-  // Function to start the lift
-  function startLift() {
+    // Ab specific toggle button par "selected" class jodo
+    var button = document.getElementById('button' + median);
+    button.classList.add('selected');
+}
+
+
+
+
+function startLift() {
     var selectedFloors = [];
     var buttons = document.querySelectorAll('.button.selected');
     buttons.forEach(function(button) {
@@ -48,15 +53,27 @@ function minmaxRecursive(selectedFloors, start, end) {
     });
 
    console.log('Selected floors:', selectedFloors);
+   console.log('Lift started!');
 /*---------------------------------------------------------------------------------------------------*/
    if(selectedFloors.length===1){
-    console.log("single");
+    console.log("single liftttt");
    }
    else if(selectedFloors.length>=2){
-    minmaxRecursive(selectedFloors,0,selectedFloors.length-1);
+   const median = minmaxRecursive(selectedFloors,0,selectedFloors.length-1);
+   console.log(median+" Is median");  
+   toggleSelection2(median);
     
     
    }
 
-    console.log('Lift started!');
+    
   }
+  // JavaScript function to toggle selection of elevator buttons
+  function toggleSelection(floor) {
+    var button = document.getElementById('button' + floor);
+  // console.log(button);
+    button.classList.toggle('selected');
+
+  }
+
+
