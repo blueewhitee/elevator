@@ -19,14 +19,15 @@ function minmaxRecursive(selectedFloors, start, end) {
     const rightMinMax = minmaxRecursive(selectedFloors, mid + 1, end);
     
     // Compare minmax of two halves
+    return{
     
-    const minimumm =  Math.min(leftMinMax.min, rightMinMax.min);
-    const maxmumm=    Math.max(leftMinMax.max, rightMinMax.max);
-    console.log(minimumm);
-    console.log(maxmumm);
-    const median = Math.floor((minimumm+maxmumm)/2);
+    min:  Math.min(leftMinMax.min, rightMinMax.min),
+    max:   Math.max(leftMinMax.max, rightMinMax.max)}
+  //  console.log(minimumm);}
+   // console.log(maxmumm);
+  //  const median = Math.floor((minimumm+maxmumm)/2);
     //console.log(median+" Is median");  
-    return median; 
+
 
 }
 
@@ -53,15 +54,21 @@ function startLift() {
     });
 
    console.log('Selected floors:', selectedFloors);
+   console.log(selectedFloors[selectedFloors.length-1]);
    console.log('Lift started!');
 /*---------------------------------------------------------------------------------------------------*/
    if(selectedFloors.length===1){
     console.log("single liftttt");
    }
    else if(selectedFloors.length>=2){
-   const median = minmaxRecursive(selectedFloors,0,selectedFloors.length-1);
-   console.log(median+" Is median");  
-   toggleSelection2(median);
+   let value=minmaxRecursive(selectedFloors,0,selectedFloors.length-1);
+   let min = value['min'];
+  let max = value['max'];
+  let median = Math.floor((min+max)/2);
+  console.log("found the best floor to stop lift "+median);
+  
+  
+  toggleSelection2(median);
     
     
    }
