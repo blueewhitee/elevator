@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  header, footer {
+    background-color: grey;
+    padding: 20px;
+  }
+  .placeholder {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 40px;
+    border: width 10px;;
+  }
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+  }
+  .button {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #ccc;
+  }
+  .button.selected {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .light {
+    width: 20px;
+    height: 20px;
+    background-color: grey;
+    border-radius: 50%;
+    margin-left: 5px;
+  }
+  .active {
+    background-color: green;
+  }
+  .go-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+    <script src="index.js"></script> 
+</header>
+
+
+<div class="Time" style="display: flex;justify-content: center;">
+    <form><input placeholder="Time"></form></div>
+
+<div class="button-container">
+  <!-- Buttons -->
+  <!-- Change the onclick event to send different data -->
+  <div class="button" id="button1" onclick="toggleSelection(1)">1<div class="light" id="light1"></div></div>
+  <div class="button" id="button2" onclick="toggleSelection(2)">2<div class="light" id="light2"></div></div>
+  <div class="button" id="button3" onclick="toggleSelection(3)">3<div class="light" id="light3"></div></div>
+  <div class="button" id="button4" onclick="toggleSelection(4)">4<div class="light" id="light4"></div></div>
+  <div class="button" id="button5" onclick="toggleSelection(5)">5<div class="light" id="light5"></div></div>
+  <div class="button" id="button6" onclick="toggleSelection(6)">6<div class="light" id="light6"></div></div>
+  <div class="button" id="button7" onclick="toggleSelection(7)">7<div class="light" id="light7"></div></div>
+  <div class="button" id="button8" onclick="toggleSelection(8)">8<div class="light" id="light8"></div></div>
+  <div class="button" id="button9" onclick="toggleSelection(9)">9<div class="light" id="light9"></div></div>
+  <div class="button" id="button10" onclick="toggleSelection(10)">10<div class="light" id="light10"></div></div>
+  <div class="button" id="button11" onclick="toggleSelection(11)">11<div class="light" id="light11"></div></div>
+  <div class="button" id="button12" onclick="toggleSelection(12)">12<div class="light" id="light12"></div></div>
+  <div class="button" id="button13" onclick="toggleSelection(13)">13<div class="light" id="light13"></div></div>
+  <div class="button" id="button14" onclick="toggleSelection(14)">14<div class="light" id="light14"></div></div>
+  <div class="button" id="button15" onclick="toggleSelection(15)">15<div class="light" id="light15"></div></div>
+</div>
+
+<button class="go-button" onclick="startLift()">Go</button>
+
+<footer>
+  <!-- Footer content here -->
+</footer>
+
+<script>
+  // JavaScript function to toggle selection of elevator buttons
+  function toggleSelection(floor) {
+    var button = document.getElementById('button' + floor);
+    button.classList.toggle('selected');
+  }
+
+  // Function to start the lift
+  function startLift() {
+    var selectedFloors = [];
+    var buttons = document.querySelectorAll('.button.selected');
+    buttons.forEach(function(button) {
+      selectedFloors.push(button.id.replace('button', ''));
+    });
+    console.log('Selected floors:', selectedFloors);
+    // Implement lift start functionality here
+    console.log('Lift started!');
+  }
+</script>
+
+</body>
+</html>
