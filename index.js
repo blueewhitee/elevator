@@ -32,13 +32,11 @@ function minmaxRecursive(selectedFloors, start, end) {
 }
 
 function toggleSelection2(median) {
-    // Sabhi toggle buttons se "selected" class hatao
+   
     var allButtons = document.querySelectorAll('.button');
     allButtons.forEach(function(button) {
         button.classList.remove('selected');
     });
-
-    // Ab specific toggle button par "selected" class jodo
     var button = document.getElementById('button' + median);
     button.classList.add('selected');
 }
@@ -54,26 +52,24 @@ function startLift() {
     });
 
    console.log('Selected floors:', selectedFloors);
-   console.log(selectedFloors[selectedFloors.length-1]);
+   
+   //console.log(selectedFloors[selectedFloors.length-1]);
    console.log('Lift started!');
 /*---------------------------------------------------------------------------------------------------*/
    if(selectedFloors.length===1){
-    console.log("single liftttt");
+    console.log("one floor selected");
    }
    else if(selectedFloors.length>=2){
    let value=minmaxRecursive(selectedFloors,0,selectedFloors.length-1);
    let min = value['min'];
   let max = value['max'];
   let median = Math.floor((min+max)/2);
-  console.log("found the best floor to stop lift "+median);
-  
-  
-  toggleSelection2(median);
-    
-    
-   }
+    console.log(min+" minimum among floors selected");
+    console.log(max+"miximum among floors selected");
 
-    
+  console.log("found the best floor to stop lift "+median);
+  toggleSelection2(median);
+   }
   }
   // JavaScript function to toggle selection of elevator buttons
   function toggleSelection(floor) {
